@@ -27,28 +27,34 @@ public class Vacation {
   @Column(name = "user_id", nullable = false)
   private Integer userId;
 
+  @Column(name = "left_day_count", nullable = false)
+  private Integer leftDayCount;
+
+  @Column(name = "used_day_count", nullable = false)
+  private Integer usedDayCount;
+
   @Column(name = "start_date", nullable = false)
-    private LocalDate startDate;
+  private LocalDate startDate;
 
-    @Column(name = "end_date", nullable = false)
-    private LocalDate endDate;
+  @Column(name = "end_date", nullable = false)
+  private LocalDate endDate;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "vacation_type", nullable = false)
-    private VacationType vacationType;
+  @Enumerated(EnumType.STRING)
+  @Column(name = "vacation_type", nullable = false)
+  private VacationType vacationType;
     // ANNUAL, SICK, UNPAID, OTHER
 
-    @Column
-    private String reason;
+  @Column
+  private String reason;
 
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false, name = "vacation_status")
-    private VacationStatus status;
-    // PENDING, APPROVED, REJECTED
+  @Enumerated(EnumType.STRING)
+  @Column(nullable = false, name = "vacation_status")
+  private VacationStatus status;
+  // PENDING, APPROVED, REJECTED
     
-    @Column(name = "created_at", nullable = false)
-    private LocalDateTime createdAt;
+  @Column(name = "created_at", nullable = false)
+  private LocalDateTime createdAt;
 
-    @Column(name = "updated_at", nullable = false)
-    private LocalDateTime updatedAt;
+  @Column(name = "updated_at", nullable = false)
+  private LocalDateTime updatedAt;
 }
