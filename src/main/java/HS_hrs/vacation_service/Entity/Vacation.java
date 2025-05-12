@@ -12,6 +12,7 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 import lombok.Getter;
 
@@ -57,4 +58,11 @@ public class Vacation {
 
   @Column(name = "updated_at", nullable = false)
   private LocalDateTime updatedAt;
+
+
+  @PrePersist // save 호출 시 자동 실행(DB에 저장하기 전에 실행)
+  public void prePersist() {
+    this.createdAt = LocalDateTime.now();
+  }
+
 }
