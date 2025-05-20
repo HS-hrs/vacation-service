@@ -14,11 +14,18 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
+import java.time.temporal.ChronoUnit;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "vacations")
 @Getter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Vacation {
 
   @Id
@@ -28,7 +35,7 @@ public class Vacation {
   @Column(name = "user_id", nullable = false)
   private Integer userId;
 
-  @Column(name = "left_day_count", nullable = false)
+  @Column(name = "left_day_count", nullable = false, columnDefinition = "INTEGER DEFAULT 12")
   private Integer leftDayCount;
 
   @Column(name = "used_day_count", nullable = false)
@@ -56,8 +63,10 @@ public class Vacation {
   @Column(name = "created_at", nullable = false)
   private LocalDateTime createdAt;
 
-  @Column(name = "updated_at", nullable = false)
+  @Column(name = "updated_at")
   private LocalDateTime updatedAt;
+
+
 
 
   @PrePersist // save 호출 시 자동 실행(DB에 저장하기 전에 실행)
@@ -65,4 +74,37 @@ public class Vacation {
     this.createdAt = LocalDateTime.now();
   }
 
+
+  public static Vacation create(Integer userId, LocalDate startDate, LocalDate endDate, VacationType type, String reason, Integer usedDayCount, Integer leftDayCount) {
+    if (startDate.isAfter(endDate)) {
+        throw new IllegalArgumentException("시작일은 종료일보다 늦을 수 없습니다.");
+      }
+
+
+            return HS_hrs.vacation_service.Entity.Vacation.builder()
+                .userId(userId)
+                .startDate(startDate)
+                .endDate(endDate)
+                .vacationType(type)
+                .reason(reason)
+                .status(VacationStatus.PENDING)
+                .usedDayCount(usedDayCount)
+                .leftDayCount(leftDayCount)
+                .build();
+  }
+
+  public void updateDetail(String reason, LocalDate startDate, LocalDate endDate, VacationType vacationType, Integer usedDayCount, Integer leftDayCount){
+
+    if (startDate.isAfter(endDate)) {
+      throw new IllegalArgumentException("시작일은 종료일보다 늦을 수 없습니다.");
+    }
+
+    this.reason = reason;
+    this.startDate = startDate;
+    this.endDate = endDate;
+    this.vacationType = vacationType;
+    this.usedDayCount = usedDayCount;
+    this.leftDayCount = leftDayCount;
+    this.updatedAt = LocalDateTime.now();
+  }
 }
