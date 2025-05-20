@@ -9,8 +9,13 @@ import lombok.Setter;
 @AllArgsConstructor
 public class DateCalculatorResult {
 
+    /*
+    연차 계산 할 때 사용하는 DTO
+     */
+
     private final int totalUsedDays;
     private final int currentUsedDays;
+
 
     public int getRemainingDays() {
         return 12 - (totalUsedDays + currentUsedDays);

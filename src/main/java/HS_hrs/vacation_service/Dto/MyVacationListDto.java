@@ -10,6 +10,10 @@ import lombok.Setter;
 @Setter
 public class MyVacationListDto {
 
+    /*
+     휴가 목록 스트림으로 값을 넣을때 사용하는 DTO
+     */
+
     public Long id;
     public Integer leftDayCount;
     public Integer usedDayCount;

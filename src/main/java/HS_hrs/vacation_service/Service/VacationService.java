@@ -4,6 +4,7 @@ import HS_hrs.vacation_service.Dto.DateCalculatorResult;
 import HS_hrs.vacation_service.Dto.MyVacationListDto;
 import HS_hrs.vacation_service.Dto.VacationDetailDto;
 import HS_hrs.vacation_service.Dto.VacationRequestDto;
+import HS_hrs.vacation_service.Dto.VacationSummaryResponse;
 import HS_hrs.vacation_service.Dto.VacationUpdateDto;
 import HS_hrs.vacation_service.Entity.Vacation;
 import HS_hrs.vacation_service.Repository.VacationRepository;
@@ -22,6 +23,10 @@ public class VacationService {
 
     private final VacationRepository vacationRepository;
 
+
+    /*
+    휴가 등록
+     */
     @Transactional
     public void RequestLeave(VacationRequestDto dto) {
 
@@ -41,7 +46,7 @@ public class VacationService {
     }
 
     /*
-    내 휴가 상세 조회
+   상세 휴가 조회
      */
     public VacationDetailDto getVacationDetail(Long id) {
 
@@ -52,7 +57,7 @@ public class VacationService {
     }
 
     /*
-    내 휴가 업데이트
+    상세 휴가 업데이트
      */
     public VacationDetailDto updateVacationDetail(Long id, VacationUpdateDto updateDto) {
         Vacation vacation = vacationRepository.findById(id)
@@ -69,7 +74,7 @@ public class VacationService {
     }
 
     /*
-    내 휴가 취소
+    휴가 취소
      */
     public Long cancelVacation(Long id) {
 
@@ -80,11 +85,24 @@ public class VacationService {
         return id;
     }
 
-    public List<MyVacationListDto> getMyVacationList(Integer userId) {
+    /*
+    모든 휴가 목록 조회
+     */
+    public VacationSummaryResponse getMyVacationList(Integer userId) {
         List<Vacation> myVacation = vacationRepository.findByUserId(userId);
-      return myVacation.stream()
-          .map(MyVacationListDto::fromEntity)
-          .collect(Collectors.toList());
+
+        List<MyVacationListDto> dtoList = myVacation.stream()
+            .map(MyVacationListDto::fromEntity)
+            .collect(Collectors.toList());
+
+        int usedDays = myVacation.stream()
+            .mapToInt(Vacation::getUsedDayCount)
+            .sum();
+
+        int totalAnnualLeave = 12; // 사용자별 연차 정책이 있다면 여기서 계산
+        int remainingDays = totalAnnualLeave - usedDays;
+
+        return new VacationSummaryResponse(dtoList,remainingDays,usedDays);
     }
 
     /*

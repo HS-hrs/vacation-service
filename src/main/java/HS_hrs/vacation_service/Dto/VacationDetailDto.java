@@ -12,6 +12,10 @@ import lombok.Setter;
 @Setter
 public class VacationDetailDto {
 
+    /*
+    상세 휴가 정보 DTO
+     */
+
     private Long id;
     private Integer leftDayCount;
     private Integer usedDayCount;

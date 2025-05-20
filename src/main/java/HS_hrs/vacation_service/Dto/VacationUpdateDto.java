@@ -9,6 +9,10 @@ import lombok.Setter;
 @Setter
 public class VacationUpdateDto {
 
+    /*
+    휴가 업데이트 DTO
+     */
+
     private Integer userId;
     private String reason;
     private LocalDate startDate;

@@ -16,6 +16,10 @@ import lombok.Setter;
 @Setter
 public class VacationRequestDto {
 
+  /*
+  휴가 등록 DTO
+   */
+
   private Integer userId;
   @NotNull(message = "휴가 시작일은 필수입니다." )
   private LocalDate startDate;

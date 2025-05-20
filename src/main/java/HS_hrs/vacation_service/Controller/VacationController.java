@@ -3,6 +3,7 @@ package HS_hrs.vacation_service.Controller;
 import HS_hrs.vacation_service.Dto.MyVacationListDto;
 import HS_hrs.vacation_service.Dto.VacationDetailDto;
 import HS_hrs.vacation_service.Dto.VacationRequestDto;
+import HS_hrs.vacation_service.Dto.VacationSummaryResponse;
 import HS_hrs.vacation_service.Dto.VacationUpdateDto;
 import HS_hrs.vacation_service.Service.VacationService;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -94,8 +95,8 @@ public class VacationController {
   @Parameters({
       @Parameter(name = "userId",description = "userId", in = ParameterIn.PATH),
   })
-  public ResponseEntity<List<MyVacationListDto>> MyVacationList(@PathVariable("userId") Integer userId){
-    List<MyVacationListDto> myVacationList = vacationService.getMyVacationList(userId);
+  public ResponseEntity<VacationSummaryResponse> MyVacationList(@PathVariable("userId") Integer userId){
+    VacationSummaryResponse myVacationList = vacationService.getMyVacationList(userId);
     return ResponseEntity.ok(myVacationList);
   }
 
