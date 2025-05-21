@@ -1,22 +1,19 @@
 package HS_hrs.vacation_service.Controller;
 
-import HS_hrs.vacation_service.Dto.MyVacationListDto;
-import HS_hrs.vacation_service.Dto.VacationDetailDto;
-import HS_hrs.vacation_service.Dto.VacationRequestDto;
-import HS_hrs.vacation_service.Dto.VacationSummaryResponse;
-import HS_hrs.vacation_service.Dto.VacationUpdateDto;
-import HS_hrs.vacation_service.Service.VacationService;
+import HS_hrs.vacation_service.Dto.VacationUserDtoList.VacationDetailDto;
+import HS_hrs.vacation_service.Dto.VacationUserDtoList.VacationRequestDto;
+import HS_hrs.vacation_service.Dto.VacationUserDtoList.VacationSummaryResponse;
+import HS_hrs.vacation_service.Dto.VacationUserDtoList.VacationUpdateDto;
+import HS_hrs.vacation_service.Service.VacationUserService;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.Parameters;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
-import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.Mapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -28,14 +25,14 @@ import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.core.env.Environment;
 import lombok.extern.slf4j.Slf4j;
 
-@Tag(name = "vacation", description = "휴가 API")
+@Tag(name = "User Vacation API", description = "유저 전용 Vacation API")
 @Slf4j     
 @RestController
-@RequestMapping("/vacation")
+@RequestMapping("/vacation/user")
 @RequiredArgsConstructor
-public class VacationController {
+public class VacationUserController {
 
-  private final VacationService vacationService;
+  private final VacationUserService vacationUserService;
   private final Environment env;
 
     @GetMapping
@@ -54,7 +51,7 @@ public class VacationController {
     @PostMapping("/requestLeave")
     @Operation(summary = "USER 휴가 신청", description = "휴가 신청 엔드포인트")
     public ResponseEntity<Void> RequestLeave(@Valid @RequestBody VacationRequestDto dto) {
-       vacationService.RequestLeave(dto);
+       vacationUserService.RequestLeave(dto);
       return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
@@ -64,7 +61,7 @@ public class VacationController {
         @Parameter(name = "id",description = "id", in = ParameterIn.PATH),
     })
     public ResponseEntity<VacationDetailDto> getVacationDetail(@PathVariable("id") Long id) {
-      VacationDetailDto vacationDetail = vacationService.getVacationDetail(id);
+      VacationDetailDto vacationDetail = vacationUserService.getVacationDetail(id);
       return ResponseEntity.ok(vacationDetail);
     }
 
@@ -76,7 +73,7 @@ public class VacationController {
   public ResponseEntity<VacationDetailDto> updateVacationDetail(@PathVariable("id") Long id,
   @RequestBody VacationUpdateDto updateDto) {
 
-    VacationDetailDto vacationDetailDto = vacationService.updateVacationDetail(id, updateDto);
+    VacationDetailDto vacationDetailDto = vacationUserService.updateVacationDetail(id, updateDto);
     return ResponseEntity.ok().body(vacationDetailDto);
   }
 
@@ -86,7 +83,7 @@ public class VacationController {
       @Parameter(name = "id",description = "id", in = ParameterIn.PATH),
   })
   public ResponseEntity<String> cancelVacationDetail(@PathVariable("id") Long id) {
-    Long cancelId = vacationService.cancelVacation(id);
+    Long cancelId = vacationUserService.cancelVacation(id);
     return ResponseEntity.ok().body(cancelId + "번 휴가 취소되었습니다.");
   }
 
@@ -96,7 +93,7 @@ public class VacationController {
       @Parameter(name = "userId",description = "userId", in = ParameterIn.PATH),
   })
   public ResponseEntity<VacationSummaryResponse> MyVacationList(@PathVariable("userId") Integer userId){
-    VacationSummaryResponse myVacationList = vacationService.getMyVacationList(userId);
+    VacationSummaryResponse myVacationList = vacationUserService.getMyVacationList(userId);
     return ResponseEntity.ok(myVacationList);
   }
 

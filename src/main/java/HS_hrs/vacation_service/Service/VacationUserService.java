@@ -1,11 +1,11 @@
 package HS_hrs.vacation_service.Service;
 
-import HS_hrs.vacation_service.Dto.DateCalculatorResult;
-import HS_hrs.vacation_service.Dto.MyVacationListDto;
-import HS_hrs.vacation_service.Dto.VacationDetailDto;
-import HS_hrs.vacation_service.Dto.VacationRequestDto;
-import HS_hrs.vacation_service.Dto.VacationSummaryResponse;
-import HS_hrs.vacation_service.Dto.VacationUpdateDto;
+import HS_hrs.vacation_service.Dto.VacationUserDtoList.DateCalculatorResult;
+import HS_hrs.vacation_service.Dto.VacationUserDtoList.MyVacationListDto;
+import HS_hrs.vacation_service.Dto.VacationUserDtoList.VacationDetailDto;
+import HS_hrs.vacation_service.Dto.VacationUserDtoList.VacationRequestDto;
+import HS_hrs.vacation_service.Dto.VacationUserDtoList.VacationSummaryResponse;
+import HS_hrs.vacation_service.Dto.VacationUserDtoList.VacationUpdateDto;
 import HS_hrs.vacation_service.Entity.Vacation;
 import HS_hrs.vacation_service.Repository.VacationRepository;
 import jakarta.persistence.EntityNotFoundException;
@@ -19,7 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
-public class VacationService {
+public class VacationUserService {
 
     private final VacationRepository vacationRepository;
 

@@ -1,4 +1,4 @@
-package HS_hrs.vacation_service.Dto;
+package HS_hrs.vacation_service.Dto.VacationUserDtoList;
 
 import java.util.List;
 import lombok.AllArgsConstructor;
