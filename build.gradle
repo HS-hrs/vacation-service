@@ -74,3 +74,13 @@ tasks.withType(JavaCompile) {
 clean.doLast {
 	file(querydslDir).deleteDir()
 }
+
+// QueryDSL Q타입 수동 생성 태스크
+tasks.register("compileQuerydsl", JavaCompile) {
+	group = "build"
+	description = "Compile Querydsl Q-types"
+	source = sourceSets.main.java
+	classpath = sourceSets.main.compileClasspath
+	options.annotationProcessorGeneratedSourcesDirectory = file(querydslDir)
+	destinationDirectory.set(file(querydslDir))
+}

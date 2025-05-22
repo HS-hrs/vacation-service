@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import HS_hrs.vacation_service.Entity.Vacation;
 
-public interface VacationRepository extends JpaRepository<Vacation, Long>{
+public interface VacationRepository extends JpaRepository<Vacation, Long>, VacationRepositoryCustom {
 
     List<Vacation> findByUserId(Integer userId);
 }
