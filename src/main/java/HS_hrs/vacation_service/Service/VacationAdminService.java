@@ -1,10 +1,14 @@
 package HS_hrs.vacation_service.Service;
 
-import HS_hrs.vacation_service.Dto.VacationAdminDtoList.AllVacationListDto;
+import HS_hrs.vacation_service.Dto.Vacation.VacationAdminDtoList.UserVacationDetailDto;
+import HS_hrs.vacation_service.Dto.Vacation.VacationAdminDtoList.VacationStatusUpdateDto;
+import HS_hrs.vacation_service.Dto.Vacation.VacationUserDtoList.VacationDetailDto;
+import HS_hrs.vacation_service.Dto.Vacation.VacationAdminDtoList.AllVacationListDto;
 import HS_hrs.vacation_service.Entity.Enum.VacationStatus;
 import HS_hrs.vacation_service.Entity.Enum.VacationType;
 import HS_hrs.vacation_service.Entity.Vacation;
 import HS_hrs.vacation_service.Repository.VacationRepository;
+import jakarta.persistence.EntityNotFoundException;
 import java.util.List;
 import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
@@ -34,6 +38,31 @@ public class VacationAdminService {
         List<Vacation> search = vacationRepository.search(userId, vacationType, vacationStatus);
 
         return search.stream().map(AllVacationListDto::fromEntity).collect(Collectors.toList());
+    }
+
+    /*
+    상세 휴가 조회
+     */
+    public UserVacationDetailDto getUserVacationDetail(Integer userId, Long id) {
+
+        Vacation vacation = vacationRepository.findByUserIdAndId(userId, id)
+            .orElseThrow(() -> new EntityNotFoundException("해당 사용자의 휴가 정보가 없습니다."));
+
+        return new UserVacationDetailDto(vacation);
+    }
+
+    /*
+    휴가 승인, 취소
+     */
+    public UserVacationDetailDto statusUpdate(Integer userId, Long id, VacationStatusUpdateDto dto) {
+        Vacation vacation = vacationRepository.findByUserIdAndId(userId, id)
+            .orElseThrow(() -> new EntityNotFoundException("해당 사용자의 휴가 정보가 없습니다."));
+
+        vacation.StatusUpdate(dto.getVacationStatus());
+
+        vacationRepository.save(vacation);
+
+        return new UserVacationDetailDto(vacation);
     }
 
 }

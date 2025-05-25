@@ -1,9 +1,12 @@
 package HS_hrs.vacation_service.Controller;
 
-import HS_hrs.vacation_service.Dto.VacationAdminDtoList.AllVacationListDto;
+import HS_hrs.vacation_service.Dto.Vacation.VacationAdminDtoList.UserVacationDetailDto;
+import HS_hrs.vacation_service.Dto.Vacation.VacationAdminDtoList.VacationStatusUpdateDto;
+import HS_hrs.vacation_service.Dto.Vacation.VacationUserDtoList.VacationDetailDto;
+import HS_hrs.vacation_service.Dto.Vacation.VacationAdminDtoList.AllVacationListDto;
+import HS_hrs.vacation_service.Dto.Vacation.VacationUserDtoList.VacationUpdateDto;
 import HS_hrs.vacation_service.Entity.Enum.VacationStatus;
 import HS_hrs.vacation_service.Entity.Enum.VacationType;
-import HS_hrs.vacation_service.Entity.Vacation;
 import HS_hrs.vacation_service.Service.VacationAdminService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -14,6 +17,9 @@ import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -52,5 +58,29 @@ public class VacationAdminController {
     ) {
         List<AllVacationListDto> list = vacationAdminService.search(userId, vacationType, vacationStatus);
         return ResponseEntity.ok(list);
+    }
+
+    @GetMapping("/vacationDetail/{userId}/{id}")
+    @Operation(summary = "유저 상세 휴가 조희", description = "유저 상세 휴가 정보 조회")
+    @Parameters({
+        @Parameter(name = "userId",description = "userId", in = ParameterIn.PATH),
+        @Parameter(name = "id",description = "id", in = ParameterIn.PATH)
+    })
+    public ResponseEntity<UserVacationDetailDto> getVacationDetail(@PathVariable("userId") Integer userId, @PathVariable("id") Long id ) {
+        UserVacationDetailDto vacationDetail = vacationAdminService.getUserVacationDetail(userId, id);
+        return ResponseEntity.ok(vacationDetail);
+    }
+
+    @PostMapping("/vacationDetail/{userId}/{id}")
+    @Operation(summary = "관리자 휴가 승인,취소", description = "관리자")
+    @Parameters({
+        @Parameter(name = "userId",description = "userId", in = ParameterIn.PATH),
+        @Parameter(name = "id",description = "id", in = ParameterIn.PATH)
+    })
+    public ResponseEntity<UserVacationDetailDto> updateVacationDetail(@PathVariable("userId") Integer userId, @PathVariable("id") Long id,
+        @RequestBody VacationStatusUpdateDto updateDto) {
+
+        UserVacationDetailDto vacationDetailDto = vacationAdminService.statusUpdate(userId, id, updateDto);
+        return ResponseEntity.ok().body(vacationDetailDto);
     }
 }

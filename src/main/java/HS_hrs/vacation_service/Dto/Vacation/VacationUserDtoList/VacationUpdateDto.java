@@ -1,12 +1,14 @@
-package HS_hrs.vacation_service.Dto.VacationUserDtoList;
+package HS_hrs.vacation_service.Dto.Vacation.VacationUserDtoList;
 
 import HS_hrs.vacation_service.Entity.Enum.VacationType;
 import java.time.LocalDate;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
+@NoArgsConstructor
 public class VacationUpdateDto {
 
     /*

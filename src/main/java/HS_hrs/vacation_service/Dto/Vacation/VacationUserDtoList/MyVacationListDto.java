@@ -1,4 +1,4 @@
-package HS_hrs.vacation_service.Dto.VacationUserDtoList;
+package HS_hrs.vacation_service.Dto.Vacation.VacationUserDtoList;
 
 import HS_hrs.vacation_service.Entity.Enum.VacationStatus;
 import HS_hrs.vacation_service.Entity.Vacation;

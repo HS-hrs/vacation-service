@@ -1,4 +1,4 @@
-package HS_hrs.vacation_service.Dto.VacationUserDtoList;
+package HS_hrs.vacation_service.Dto.Vacation.VacationUserDtoList;
 
 import HS_hrs.vacation_service.Entity.Enum.VacationStatus;
 import HS_hrs.vacation_service.Entity.Enum.VacationType;
@@ -13,7 +13,7 @@ import lombok.Setter;
 public class VacationDetailDto {
 
     /*
-    상세 휴가 정보 DTO
+      상세 휴가 정보 DTO
      */
 
     private Long id;

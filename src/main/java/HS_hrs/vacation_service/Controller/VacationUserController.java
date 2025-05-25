@@ -1,9 +1,9 @@
 package HS_hrs.vacation_service.Controller;
 
-import HS_hrs.vacation_service.Dto.VacationUserDtoList.VacationDetailDto;
-import HS_hrs.vacation_service.Dto.VacationUserDtoList.VacationRequestDto;
-import HS_hrs.vacation_service.Dto.VacationUserDtoList.VacationSummaryResponse;
-import HS_hrs.vacation_service.Dto.VacationUserDtoList.VacationUpdateDto;
+import HS_hrs.vacation_service.Dto.Vacation.VacationUserDtoList.VacationDetailDto;
+import HS_hrs.vacation_service.Dto.Vacation.VacationUserDtoList.VacationRequestDto;
+import HS_hrs.vacation_service.Dto.Vacation.VacationUserDtoList.VacationSummaryResponse;
+import HS_hrs.vacation_service.Dto.Vacation.VacationUserDtoList.VacationUpdateDto;
 import HS_hrs.vacation_service.Service.VacationUserService;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.Parameters;

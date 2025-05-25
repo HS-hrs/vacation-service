@@ -14,7 +14,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
-import java.time.temporal.ChronoUnit;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -66,6 +65,8 @@ public class Vacation {
   @Column(name = "updated_at")
   private LocalDateTime updatedAt;
 
+  @Column(name = "admin_updated_at")
+  private LocalDateTime adminUpdateAt;
 
 
 
@@ -106,5 +107,10 @@ public class Vacation {
     this.usedDayCount = usedDayCount;
     this.leftDayCount = leftDayCount;
     this.updatedAt = LocalDateTime.now();
+  }
+
+  public void StatusUpdate(VacationStatus status) {
+    this.status = status;
+    this.adminUpdateAt = LocalDateTime.now();
   }
 }

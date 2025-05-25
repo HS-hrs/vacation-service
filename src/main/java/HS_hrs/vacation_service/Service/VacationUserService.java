@@ -1,11 +1,11 @@
 package HS_hrs.vacation_service.Service;
 
-import HS_hrs.vacation_service.Dto.VacationUserDtoList.DateCalculatorResult;
-import HS_hrs.vacation_service.Dto.VacationUserDtoList.MyVacationListDto;
-import HS_hrs.vacation_service.Dto.VacationUserDtoList.VacationDetailDto;
-import HS_hrs.vacation_service.Dto.VacationUserDtoList.VacationRequestDto;
-import HS_hrs.vacation_service.Dto.VacationUserDtoList.VacationSummaryResponse;
-import HS_hrs.vacation_service.Dto.VacationUserDtoList.VacationUpdateDto;
+import HS_hrs.vacation_service.Dto.Vacation.VacationUserDtoList.DateCalculatorResult;
+import HS_hrs.vacation_service.Dto.Vacation.VacationUserDtoList.MyVacationListDto;
+import HS_hrs.vacation_service.Dto.Vacation.VacationUserDtoList.VacationDetailDto;
+import HS_hrs.vacation_service.Dto.Vacation.VacationUserDtoList.VacationRequestDto;
+import HS_hrs.vacation_service.Dto.Vacation.VacationUserDtoList.VacationSummaryResponse;
+import HS_hrs.vacation_service.Dto.Vacation.VacationUserDtoList.VacationUpdateDto;
 import HS_hrs.vacation_service.Entity.Vacation;
 import HS_hrs.vacation_service.Repository.VacationRepository;
 import jakarta.persistence.EntityNotFoundException;

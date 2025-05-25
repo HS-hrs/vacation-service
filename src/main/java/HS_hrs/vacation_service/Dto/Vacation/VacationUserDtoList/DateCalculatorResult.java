@@ -1,4 +1,4 @@
-package HS_hrs.vacation_service.Dto.VacationUserDtoList;
+package HS_hrs.vacation_service.Dto.Vacation.VacationUserDtoList;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
