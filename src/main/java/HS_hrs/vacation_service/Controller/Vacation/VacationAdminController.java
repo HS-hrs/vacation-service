@@ -1,13 +1,11 @@
-package HS_hrs.vacation_service.Controller;
+package HS_hrs.vacation_service.Controller.Vacation;
 
-import HS_hrs.vacation_service.Dto.Vacation.VacationAdminDtoList.UserVacationDetailDto;
-import HS_hrs.vacation_service.Dto.Vacation.VacationAdminDtoList.VacationStatusUpdateDto;
-import HS_hrs.vacation_service.Dto.Vacation.VacationUserDtoList.VacationDetailDto;
-import HS_hrs.vacation_service.Dto.Vacation.VacationAdminDtoList.AllVacationListDto;
-import HS_hrs.vacation_service.Dto.Vacation.VacationUserDtoList.VacationUpdateDto;
+import HS_hrs.vacation_service.Dto.Vacation.Admin.UserVacationDetailDto;
+import HS_hrs.vacation_service.Dto.Vacation.Admin.VacationStatusUpdateDto;
+import HS_hrs.vacation_service.Dto.Vacation.Admin.AllVacationListDto;
 import HS_hrs.vacation_service.Entity.Enum.VacationStatus;
 import HS_hrs.vacation_service.Entity.Enum.VacationType;
-import HS_hrs.vacation_service.Service.VacationAdminService;
+import HS_hrs.vacation_service.Service.Vacation.VacationAdminService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.Parameters;

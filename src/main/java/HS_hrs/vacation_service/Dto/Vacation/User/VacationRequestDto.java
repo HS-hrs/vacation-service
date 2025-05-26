@@ -1,4 +1,4 @@
-package HS_hrs.vacation_service.Dto.Vacation.VacationUserDtoList;
+package HS_hrs.vacation_service.Dto.Vacation.User;
 
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;

@@ -82,7 +82,7 @@ public class Vacation {
       }
 
 
-            return HS_hrs.vacation_service.Entity.Vacation.builder()
+            return Vacation.builder()
                 .userId(userId)
                 .startDate(startDate)
                 .endDate(endDate)

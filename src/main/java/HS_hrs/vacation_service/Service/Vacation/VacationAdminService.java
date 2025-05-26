@@ -1,13 +1,12 @@
-package HS_hrs.vacation_service.Service;
+package HS_hrs.vacation_service.Service.Vacation;
 
-import HS_hrs.vacation_service.Dto.Vacation.VacationAdminDtoList.UserVacationDetailDto;
-import HS_hrs.vacation_service.Dto.Vacation.VacationAdminDtoList.VacationStatusUpdateDto;
-import HS_hrs.vacation_service.Dto.Vacation.VacationUserDtoList.VacationDetailDto;
-import HS_hrs.vacation_service.Dto.Vacation.VacationAdminDtoList.AllVacationListDto;
+import HS_hrs.vacation_service.Dto.Vacation.Admin.UserVacationDetailDto;
+import HS_hrs.vacation_service.Dto.Vacation.Admin.VacationStatusUpdateDto;
+import HS_hrs.vacation_service.Dto.Vacation.Admin.AllVacationListDto;
 import HS_hrs.vacation_service.Entity.Enum.VacationStatus;
 import HS_hrs.vacation_service.Entity.Enum.VacationType;
 import HS_hrs.vacation_service.Entity.Vacation;
-import HS_hrs.vacation_service.Repository.VacationRepository;
+import HS_hrs.vacation_service.Repository.Vacation.VacationRepository;
 import jakarta.persistence.EntityNotFoundException;
 import java.util.List;
 import java.util.stream.Collectors;

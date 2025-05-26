@@ -1,4 +1,4 @@
-package HS_hrs.vacation_service.Dto.Vacation.VacationAdminDtoList;
+package HS_hrs.vacation_service.Dto.Vacation.Admin;
 
 import HS_hrs.vacation_service.Entity.Enum.VacationStatus;
 import lombok.Getter;

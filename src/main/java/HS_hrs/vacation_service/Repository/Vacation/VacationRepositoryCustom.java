@@ -1,4 +1,4 @@
-package HS_hrs.vacation_service.Repository;
+package HS_hrs.vacation_service.Repository.Vacation;
 
 import HS_hrs.vacation_service.Entity.Enum.VacationStatus;
 import HS_hrs.vacation_service.Entity.Enum.VacationType;

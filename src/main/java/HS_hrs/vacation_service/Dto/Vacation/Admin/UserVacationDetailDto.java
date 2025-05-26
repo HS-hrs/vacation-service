@@ -1,6 +1,6 @@
-package HS_hrs.vacation_service.Dto.Vacation.VacationAdminDtoList;
+package HS_hrs.vacation_service.Dto.Vacation.Admin;
 
-import HS_hrs.vacation_service.Dto.Vacation.VacationUserDtoList.VacationDetailDto;
+import HS_hrs.vacation_service.Dto.Vacation.User.VacationDetailDto;
 import HS_hrs.vacation_service.Entity.Vacation;
 import lombok.Getter;
 import lombok.Setter;

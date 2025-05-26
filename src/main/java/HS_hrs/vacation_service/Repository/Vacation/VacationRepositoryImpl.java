@@ -1,4 +1,4 @@
-package HS_hrs.vacation_service.Repository;
+package HS_hrs.vacation_service.Repository.Vacation;
 
 import static javax.management.Query.eq;
 
