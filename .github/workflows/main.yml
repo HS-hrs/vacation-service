@@ -27,5 +27,5 @@ jobs:
 
       - name: Build and Push Docker image
         run: |
-         docker build -t mulook/eureka-server:v${{ github.run_number }} .
-         docker push mulook/eureka-server:v${{ github.run_number }}
+         docker build -t mulook/vacation-service:v${{ github.run_number }} .
+         docker push mulook/vacation-service:v${{ github.run_number }}
