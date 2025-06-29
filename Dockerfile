@@ -11,7 +11,7 @@ FROM eclipse-temurin:17-jre-alpine
 WORKDIR /app
 
 # 3. 빌드된 JAR 파일 복사 (경로 주의!)
-COPY --from=build /app/build/libs/eureka-server-0.0.1-SNAPSHOT.jar app.jar
+COPY --from=build /app/build/libs/vacation-service-0.0.1-SNAPSHOT.jar app.jar
 
 # 4. 애플리케이션 실행
 ENTRYPOINT ["java", "-jar", "app.jar"]
